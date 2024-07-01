@@ -1,0 +1,129 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpv0ws2ohmc2v"]
+
+[ext_resource type="Script" path="res://Scripts/levThreeVictory.gd" id="1_nwyph"]
+[ext_resource type="FontFile" uid="uid://bc3jfcgxsnyfo" path="res://Assets/Code letterfont/CODE Light.otf" id="2_qeb2o"]
+[ext_resource type="FontFile" uid="uid://doog182xprt73" path="res://Assets/Code letterfont/CODE Bold.otf" id="3_4lfr2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s660r"]
+bg_color = Color(0.286684, 0.286684, 0.286683, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1htj6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6we41"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="L3Victory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nwyph")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 13.0
+offset_right = 788.0
+offset_bottom = 137.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_qeb2o")
+theme_override_font_sizes/font_size = 113
+text = "nivel 3"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 111.0
+offset_right = 1120.0
+offset_bottom = 235.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_qeb2o")
+theme_override_font_sizes/font_size = 62
+text = "completado"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 184.0
+offset_right = 948.0
+offset_bottom = 317.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4lfr2")
+theme_override_font_sizes/font_size = 62
+text = "¡FELICIDADES!
+¡TERMINASTE EL JUEGO!"
+horizontal_alignment = 1
+
+[node name="TotalShots" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -2.0
+offset_top = 34.0
+offset_right = 38.0
+offset_bottom = 74.0
+
+[node name="ShotsDP" type="Label" parent="TotalShots"]
+layout_mode = 0
+offset_left = 819.0
+offset_top = 300.0
+offset_right = 1693.0
+offset_bottom = 424.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_qeb2o")
+theme_override_font_sizes/font_size = 62
+text = "000"
+
+[node name="Label4" type="Label" parent="TotalShots"]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 300.0
+offset_right = 1140.0
+offset_bottom = 424.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_qeb2o")
+theme_override_font_sizes/font_size = 62
+text = "disparos totales:"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 417.0
+offset_right = 945.0
+offset_bottom = 550.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4lfr2")
+theme_override_font_sizes/font_size = 62
+text = "¿PODÉS HACER MENOS?"
+horizontal_alignment = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_left = 365.0
+offset_top = 508.0
+offset_right = 793.0
+offset_bottom = 666.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4lfr2")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_s660r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1htj6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6we41")
+text = " MENU PRINCIPAL "
+
+[node name="QuitButton" type="Button" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4lfr2")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_s660r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1htj6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6we41")
+text = " SALIR "
+
+[connection signal="pressed" from="BoxContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

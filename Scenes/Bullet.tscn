@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw8jpnfl5qaw3"]
+
+[ext_resource type="Texture2D" uid="uid://cfpsjwogg7kor" path="res://Assets/Sprites TP7/Sprite01.png" id="1_68iyr"]
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_jsbbq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ro2qt"]
+
+[node name="Bullet" type="CharacterBody2D" groups=["Bullet"]]
+script = ExtResource("1_jsbbq")
+speed = 300
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-12, 0)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_68iyr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(13, 0)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_68iyr")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ro2qt")

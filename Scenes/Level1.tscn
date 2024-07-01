@@ -1,0 +1,229 @@
+[gd_scene load_steps=10 format=3 uid="uid://bsr40dmni4kua"]
+
+[ext_resource type="Script" path="res://Scripts/levelOne.gd" id="1_losgi"]
+[ext_resource type="PackedScene" uid="uid://dgdfx1w5ncnn0" path="res://Scenes/Player.tscn" id="1_vjpcl"]
+[ext_resource type="PackedScene" uid="uid://bb0ycludniugn" path="res://Scenes/Target.tscn" id="3_lwnh5"]
+[ext_resource type="FontFile" uid="uid://doog182xprt73" path="res://Assets/Code letterfont/CODE Bold.otf" id="4_xomxf"]
+[ext_resource type="FontFile" uid="uid://bc3jfcgxsnyfo" path="res://Assets/Code letterfont/CODE Light.otf" id="5_52it6"]
+[ext_resource type="Texture2D" uid="uid://34a5q2jsc31p" path="res://Assets/Sprites TP7/Sprite02.png" id="6_4akh3"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="7_drlj0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7e3g"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvr5i"]
+size = Vector2(40, 40)
+
+[node name="Level1" type="Node"]
+script = ExtResource("1_losgi")
+
+[node name="Player" parent="." instance=ExtResource("1_vjpcl")]
+position = Vector2(600, 552)
+
+[node name="Target" parent="." groups=["Target"] instance=ExtResource("3_lwnh5")]
+position = Vector2(588, 109)
+
+[node name="Obstacle" type="StaticBody2D" parent="."]
+position = Vector2(445, 214)
+scale = Vector2(6.6657, 0.809119)
+
+[node name="Panel" type="Panel" parent="Obstacle"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p7e3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_dvr5i")
+
+[node name="WALLS" type="Node2D" parent="."]
+
+[node name="Wall1" type="StaticBody2D" parent="WALLS"]
+position = Vector2(-31, -50)
+scale = Vector2(30.392, 1.29287)
+
+[node name="Panel" type="Panel" parent="WALLS/Wall1"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p7e3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WALLS/Wall1"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_dvr5i")
+
+[node name="Wall2" type="StaticBody2D" parent="WALLS"]
+position = Vector2(-31, 648)
+scale = Vector2(30.392, 1.29287)
+
+[node name="Panel" type="Panel" parent="WALLS/Wall2"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p7e3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WALLS/Wall2"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_dvr5i")
+
+[node name="Wall3" type="StaticBody2D" parent="WALLS"]
+position = Vector2(-1, -52)
+rotation = 1.5708
+scale = Vector2(18.792, 1.29287)
+
+[node name="Panel" type="Panel" parent="WALLS/Wall3"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p7e3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WALLS/Wall3"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_dvr5i")
+
+[node name="Wall4" type="StaticBody2D" parent="WALLS"]
+position = Vector2(1205, -52)
+rotation = 1.5708
+scale = Vector2(19.072, 1.29287)
+
+[node name="Panel" type="Panel" parent="WALLS/Wall4"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p7e3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WALLS/Wall4"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_dvr5i")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Level" type="Label" parent="HUD"]
+offset_left = 15.0
+offset_top = 17.0
+offset_right = 111.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_xomxf")
+theme_override_font_sizes/font_size = 30
+text = "NIVEL 1"
+
+[node name="Bullets" type="Label" parent="HUD"]
+offset_left = 15.0
+offset_top = 52.0
+offset_right = 111.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_xomxf")
+theme_override_font_sizes/font_size = 30
+text = "BALAS:"
+
+[node name="BulletsDP" type="Label" parent="HUD"]
+offset_left = 114.0
+offset_top = 52.0
+offset_right = 210.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_52it6")
+theme_override_font_sizes/font_size = 30
+text = "5"
+
+[node name="Bounces" type="Label" parent="HUD"]
+offset_left = 15.0
+offset_top = 87.0
+offset_right = 111.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_xomxf")
+theme_override_font_sizes/font_size = 30
+text = "REBOTES:"
+
+[node name="BouncesDP" type="Label" parent="HUD"]
+offset_left = 150.0
+offset_top = 87.0
+offset_right = 246.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_52it6")
+theme_override_font_sizes/font_size = 30
+text = "5 / 5"
+
+[node name="SHOTS" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -181.0
+offset_top = 7.0
+offset_right = -141.0
+offset_bottom = 47.0
+grow_horizontal = 0
+
+[node name="Shots" type="Label" parent="HUD/SHOTS"]
+offset_right = 138.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_xomxf")
+theme_override_font_sizes/font_size = 30
+text = "DISPAROS:"
+
+[node name="ShotsDP" type="Label" parent="HUD/SHOTS"]
+offset_left = 152.0
+offset_right = 248.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_52it6")
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="Info1" type="Label" parent="HUD"]
+offset_left = 20.0
+offset_top = 565.0
+offset_right = 483.0
+offset_bottom = 630.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_xomxf")
+theme_override_font_sizes/font_size = 30
+text = "APUNTA CON EL CURSOR
+CLICK IZQUIERDO PARA DISPARAR"
+
+[node name="Info2" type="Label" parent="HUD"]
+offset_left = 299.0
+offset_top = 259.0
+offset_right = 889.0
+offset_bottom = 392.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_52it6")
+theme_override_font_sizes/font_size = 30
+text = "GOLPEA LA ESTRELLA DISPARANDO.
+PERO OJO: NO HAY TRAYECTORIAS DIRECTAS."
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD"]
+position = Vector2(669, 176)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_4akh3")
+
+[node name="Sprite2D4" type="Sprite2D" parent="HUD"]
+position = Vector2(511, 176)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_4akh3")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="HUD"]
+position = Vector2(663, 36)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_4akh3")
+flip_v = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="HUD"]
+position = Vector2(505, 36)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_4akh3")
+flip_h = true
+flip_v = true
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+script = ExtResource("7_drlj0")
+
+[node name="ShakeTime" type="Timer" parent="Camera"]
+autostart = true
+
+[connection signal="timeout" from="Camera/ShakeTime" to="Camera" method="_on_shake_time_timeout"]
