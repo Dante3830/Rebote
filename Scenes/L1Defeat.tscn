@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkbnygqy05sqx"]
+
+[ext_resource type="Script" path="res://Scripts/levOneDefeat.gd" id="1_ykjmc"]
+[ext_resource type="FontFile" uid="uid://bc3jfcgxsnyfo" path="res://Assets/Code letterfont/CODE Light.otf" id="2_hn2ra"]
+[ext_resource type="FontFile" uid="uid://doog182xprt73" path="res://Assets/Code letterfont/CODE Bold.otf" id="3_gld1h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1ou3"]
+bg_color = Color(0.286684, 0.286684, 0.286683, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cern"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fjfj"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_526i4"]
+bg_color = Color(0.286684, 0.286684, 0.286683, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v361g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_273wh"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="L1Defeat" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ykjmc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 134.0
+offset_right = 886.0
+offset_bottom = 258.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_hn2ra")
+theme_override_font_sizes/font_size = 120
+text = "derrotado"
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 322.0
+offset_right = 798.0
+offset_bottom = 480.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_gld1h")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_t1ou3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3cern")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3fjfj")
+text = " REINTENTAR "
+
+[node name="MenuButton" type="Button" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_gld1h")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_526i4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v361g")
+theme_override_styles/normal = SubResource("StyleBoxFlat_273wh")
+text = " menu principal "
+
+[connection signal="pressed" from="BoxContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
